@@ -1,13 +1,15 @@
-
 import './App.css';
 import Hero from './components/Hero/hero';
-import Example from './components/Navbar/navbar';
+import Navbar from './components/Navbar/navbar';
 
 function App() {
   return (
     <>
-    <Example/>
-    <Hero/>
+    <Navbar/>
+    <div className="container my-8">
+    <Hero heading="Enter the text" />
+
+    </div>
     </>
   );
 }
