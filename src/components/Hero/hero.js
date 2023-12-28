@@ -1,30 +1,55 @@
-function hero() {
-  function handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
+import React, { useState } from 'react';
 
-    // Read the form data
-    const form = e.target;
-    const formData = new FormData(form);
+function Hero(props) {
+  const [text, setText] = useState('');
 
-    // You can pass formData as a fetch body directly:
-    fetch('/some-api', { method: form.method, body: formData });
+  const handleInputChange = (e) => {
+    setText(e.target.value);
+  };
 
-    // Or you can work with it as a plain object:
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+  const handleButtonClick = () => {
+    setText(text.toUpperCase());
+  };
+
+  const handleclearText=()=>{
+    setText('');
+  }
+  const handleLowerClick=()=>{
+    setText(text.toLowerCase());
+  }
+
+  const handleCopytext=()=>{
+    navigator.clipboard.writeText(text);
+  }
+
+  const handleExtraSpaces=()=>{
+    let newText=text.split(/[ ]+/);
+    setText(newText.join(" "));
   }
 
   return (
-    <form method="post" onSubmit={handleSubmit}>
-      
-      <label>
-        Edit your post:
-        <textarea className="pb-114 pr-244 mr-0 mt-131 ml-263"></textarea>
-      </label>
-      <div class="btn-group" role="group" className="margin-left: -175px;padding-top: 0px;margin-top: 51px;"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
-    </form>
+    <>
+      <div className="container">
+        <h1>{props.heading}</h1>
+        <textarea className="form-control my-3" id="myBox" rows="8" value={text} onChange={handleInputChange}></textarea>
+        <button className="btn btn-primary mx-1" onClick={handleButtonClick}>
+          Convert to Uppercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleLowerClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-1" onClick={handleclearText}>Clear Text</button>
+        <button className="btn btn-primary mx-1" onClick={handleCopytext}>Copy Text</button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+      </div>
+      <div className="container my-3">
+        <p className="text-3xl">Text Summary</p>
+        <p className='my-3'>{text.split(" ").length} words and {text.length} characters</p>
+        <p className="text-3xl">Preview</p>
+        <div className="container">
+          <p className='my-2'>{text}</p>
+        </div>
+      </div>
+    </>
   );
-};
+}
 
-export default hero;
+export default Hero;
