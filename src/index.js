@@ -2,35 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Error from './components/error';
+// import Error from './components/error';
 import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom';
-import Base64 from './components/Base64/Base64';
-// import about from './components/About/about';
+// import {
+//   createBrowserRouter,
+//   RouterProvider
+// } from 'react-router-dom';
+// import Base64 from './components/Base64/Base64';
+// // import about from './components/About/about';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
 
-    element: <App />,
-    errorElement: <Error/>,
-    children: [
-      {
-        path: "/base64",
-        element: <Base64/>,
-      },
-    ],
-  },
-]);
+//     element: <App />,
+//     errorElement: <Error/>,
+//     children: [
+//       {
+//         path: "/base64",
+//         element: <Base64/>,
+//       },
+//     ],
+//   },
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router}/>
+    <App />
+    {/* <RouterProvider router={router}/> */}
   </React.StrictMode>
 );
 

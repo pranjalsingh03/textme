@@ -2,13 +2,14 @@ function Base64(){
 
     return(
         <>
-        <div className="container">
+        {/* <div className="container">
         <h1>Enter the text:</h1>
       <textarea className="form-control" id="myBox" rows="8"></textarea>
       <button className="btn btn-primary" >Convert to Base64</button>
-        </div>
+        </div> */}
+        <p>hello</p>
         </>
     );
 };
 
-export default Base64
+export default Base64;
