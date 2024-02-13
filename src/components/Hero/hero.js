@@ -32,17 +32,17 @@ function Hero(props) {
       <div className="container">
         <h1>{props.heading}</h1>
         <textarea className="form-control my-3" id="myBox" rows="8" value={text} onChange={handleInputChange}></textarea>
-        <button className="btn btn-primary mx-1" onClick={handleButtonClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleButtonClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowerClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-1" onClick={handleclearText}>Clear Text</button>
-        <button className="btn btn-primary mx-1" onClick={handleCopytext}>Copy Text</button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowerClick}>Convert to Lowercase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleclearText}>Clear Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopytext}>Copy Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       </div>
       <div className="container my-3">
         <p className="text-3xl">Text Summary</p>
-        <p className='my-3'>{text.split(" ").length} words and {text.length} characters</p>
+        <p className='my-3'>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
         <p className="text-3xl">Preview</p>
         <div className="container">
           <p className='my-2'>{text}</p>
