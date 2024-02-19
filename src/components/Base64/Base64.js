@@ -19,10 +19,10 @@ function Base64() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button className="btn btn-primary my-1" onClick={convertToBase64}>
+      <button disabled={text.length===0} className="btn btn-primary my-1" onClick={convertToBase64}>
         Convert to Base64
       </button>
-      {base64 && <p>Base64: {base64}</p>}
+      {base64 && <p className='py-2'>Base64: {base64}</p>}
     </div>
   );
 }
